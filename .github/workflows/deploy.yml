@@ -23,6 +23,7 @@ jobs:
         password: ${{ secrets.GHCR_PAT }}
 
     - name: 🛠️ Build Docker Image
+<<<<<<< HEAD
       run: docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
 
     - name: 🚀 Push Docker Image
@@ -33,3 +34,21 @@ jobs:
 
 
 
+=======
+      run: |
+        docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
+
+    - name: 🚀 Push Docker Image
+      run: |
+        docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
+
+    - name: ☸️ Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/
+
+    - name: ✅ Confirm Deployment
+      run: |
+        kubectl get pods
+        kubectl get svc
+        kubectl get ingress
+>>>>>>> c725f30 (Fix GHCR login with GitHub secret)
