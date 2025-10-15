@@ -20,13 +20,14 @@ jobs:
       with:
         registry: ghcr.io
         username: karthi216
-        password: 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
+        password: ${{ secrets.GHCR_PAT }}
 
     - name: 🛠️ Build Docker Image
       run: docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
 
     - name: 🚀 Push Docker Image
       run: docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
+
 
 
 
