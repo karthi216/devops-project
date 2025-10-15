@@ -3,18 +3,15 @@ FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
+FROM ubuntu:22.04
 
-# Copy package.json and package-lock.json from wisecow folder
-COPY wisecow/package*.json ./
+RUN apt-get update && \
+    apt-get install -y fortune cowsay netcat && \
+    apt-get clean
 
-# Install dependencies
-RUN npm install
+COPY wisecow.sh /app/wisecow.sh
+WORKDIR /app
+RUN chmod +x wisecow.sh
 
-# Copy the rest of the application code
-COPY wisecow/. .
-
-# Expose the app port
-EXPOSE 3000
-
-# Start the app
-CMD ["npm", "start"]
+EXPOSE 4499
+CMD ["./wisecow.sh"]
