@@ -20,7 +20,7 @@ jobs:
       with:
         registry: ghcr.io
         username: karthi216
-        password: ${{ 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 }}
+        password: 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
 
     - name: 🛠️ Build Docker Image
       run: |
@@ -39,6 +39,7 @@ jobs:
         kubectl get pods
         kubectl get svc
         kubectl get ingress
+
 
 
 
