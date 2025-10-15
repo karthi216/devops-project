@@ -24,6 +24,7 @@ jobs:
 
     - name: 🛠️ Build Docker Image
 <<<<<<< HEAD
+<<<<<<< HEAD
       run: docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
 
     - name: 🚀 Push Docker Image
@@ -37,18 +38,23 @@ jobs:
 =======
       run: |
         docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
+=======
+      run: docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
+>>>>>>> f971d8d (Update deployment and service configs)
 
     - name: 🚀 Push Docker Image
-      run: |
-        docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
+      run: docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
 
-    - name: ☸️ Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/
 
+
+
+
+<<<<<<< HEAD
     - name: ✅ Confirm Deployment
       run: |
         kubectl get pods
         kubectl get svc
         kubectl get ingress
 >>>>>>> c725f30 (Fix GHCR login with GitHub secret)
+=======
+>>>>>>> f971d8d (Update deployment and service configs)

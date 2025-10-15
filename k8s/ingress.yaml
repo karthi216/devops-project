@@ -3,12 +3,8 @@ kind: Ingress
 metadata:
   name: wisecow-ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - wisecow.local
-    secretName: wisecow-tls
   rules:
   - host: wisecow.local
     http:
@@ -17,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: wisecow-service
+            name: nextjs-service
             port:
               number: 80
