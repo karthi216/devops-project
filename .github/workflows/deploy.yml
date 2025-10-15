@@ -23,8 +23,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t ghcr.io/${{ github.repository }}/wisecow:latest .
-        docker push ghcr.io/${{ github.repository }}/wisecow:latest
+        docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
+        docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
 
     - name: Deploy to Kubernetes
       run: |
