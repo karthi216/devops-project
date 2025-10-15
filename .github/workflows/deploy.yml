@@ -23,22 +23,11 @@ jobs:
         password: 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
 
     - name: 🛠️ Build Docker Image
-      run: |
-        docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
+      run: docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
 
     - name: 🚀 Push Docker Image
-      run: |
-        docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
+      run: docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
 
-    - name: ☸️ Deploy to Kubernetes
-      run: |
-        kubectl apply -f k8s/
-
-    - name: ✅ Confirm Deployment
-      run: |
-        kubectl get pods
-        kubectl get svc
-        kubectl get ingress
 
 
 
