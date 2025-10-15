@@ -24,26 +24,19 @@ jobs:
 
     - name: 🛠️ Build Docker Image
       run: |
-        echo "🔧 Building Docker image..."
         docker build -t ghcr.io/karthi216/wisecow-k8s-deployment:latest .
 
     - name: 🚀 Push Docker Image
       run: |
-        echo "📤 Pushing Docker image to GHCR..."
         docker push ghcr.io/karthi216/wisecow-k8s-deployment:latest
 
     - name: ☸️ Deploy to Kubernetes
       run: |
-        echo "📦 Applying Kubernetes manifests..."
         kubectl apply -f k8s/
 
     - name: ✅ Confirm Deployment
       run: |
-        echo "🔍 Checking deployment status..."
         kubectl get pods
         kubectl get svc
         kubectl get ingress
 
-    - name: ❌ Catch Failure
-      if: failure()
-      run: echo "❌ Deployment failed. Check logs above for details."
