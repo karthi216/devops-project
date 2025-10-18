@@ -1,51 +1,58 @@
-# Cow wisdom web server
+🗂️ Automated Backup Solution
 
-## Prerequisites
+This project provides a Bash-based automated backup solution using rsync to synchronize files and directories between local and remote systems. It helps automate backups while maintaining detailed logs and reports for monitoring and troubleshooting.
 
-```
-sudo apt install fortune-mod cowsay -y
-```
+🚀 Features
 
-## How to use?
+Automated backup of a local directory to a remote server.
 
-1. Run `./wisecow.sh`
-2. Point the browser to server port (default 4499)
+Uses rsync for efficient file transfer and synchronization.
 
-## 📜 What is wisecow?
+Generates timestamped log files and backup reports.
 
-**wisecow** is a whimsical microservice that serves random fortunes wrapped in a cowsay bubble — all over HTTP. It’s a fun, containerized project that demonstrates:
+Provides success/failure reporting after each backup execution.
 
-- 🐳 Docker image creation with runtime dependencies
-- ☸️ Kubernetes deployment with Ingress routing
-- 🧪 Shell scripting for lightweight HTTP servers
-- 🧱 DevOps best practices for local development and testing
+Easy to configure and customize via environment variables.
 
----
+🛠️ Prerequisites
 
-## 🚀 Quickstart (Minikube)
-minikube start --driver=docker
-minikube addons enable ingress
+Before using this script, ensure you have:
 
-Point Docker to Minikube
-eval $(minikube docker-env)
+Linux or macOS environment (or WSL on Windows).
 
-Build the Docker image
-docker build -t wisecow:founderfix .
+rsync installed on both local and remote systems.
 
-Deploy to Kubernetes
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-kubectl apply -f k8s/ingress.yaml
+SSH access to the remote server.
 
-What to expect?
-![Architecture Diagram](src/wisecow.png)
+Sufficient permissions to read/write in the source and log directories.
 
-🧱 Project Structure
-wisecow-k8s-deployment/
-├── Dockerfile              # Builds the cowsay server image
-├── wisecow/
-│   └── wisecow.sh          # Bash-based HTTP server with cowsay + fortune
-├── k8s/
-│   ├── deployment.yaml     # Kubernetes Deployment
-│   ├── service.yaml        # ClusterIP Service
-│   └── ingress.yaml        # Ingress for domain-style routing
+⚙️ Configuration
+
+Edit the following variables inside backup.sh before running the script:
+# === CONFIGURATION ===
+SOURCE_DIR="/path/to/source"              # Directory to back up
+REMOTE_USER="your_user"                   # Remote server username
+REMOTE_HOST="your.remote.server.com"      # Remote server address
+REMOTE_DIR="/path/to/remote/backup"       # Remote backup destination
+LOG_FILE="/var/log/backup.log"            # Log file location
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")    # Timestamp for reports
+REPORT_FILE="/tmp/backup_report_$TIMESTAMP.txt"
+
+1. Make the script executable
+chmod +x backup.sh
+
+2. Run the script
+./backup.sh
+
+If you encounter permission errors (e.g., writing to /var/log), use:
+sudo ./backup.sh
+
+3. output
+
+![Architecture Diagram](backup.png)
+
+🧰 Script Breakdown
+Section	Description
+Configuration	Defines backup source, destination, and log paths
+Backup Execution	Uses rsync for syncing files
+Reporting	Displays success or failure with detailed logging
