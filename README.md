@@ -15,9 +15,7 @@ A lightweight Bash script to monitor CPU usage, memory consumption, disk space, 
 ## 🚀 Getting Started
 ./health_monitor.sh
 
-What to expect?
 
-![Architecture Diagram](src/monitor.png)
 =======
 # Cow wisdom web server
 
@@ -69,5 +67,6 @@ wisecow-k8s-deployment/
 ├── k8s/
 │   ├── deployment.yaml     # Kubernetes Deployment
 │   ├── service.yaml        # ClusterIP Service
+
 │   └── ingress.yaml        # Ingress for domain-style routing
 >>>>>>> 3571ecb985c56640c744f768abcdcd8b24542115
