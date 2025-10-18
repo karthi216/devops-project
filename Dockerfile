@@ -1,13 +1,21 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
-RUN apt-get update && \
-    apt-get install -y fortune cowsay netcat && \
-    apt-get clean
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    cowsay \
+    fortune \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
 COPY wisecow/wisecow.sh /app/wisecow.sh
 RUN chmod +x /app/wisecow.sh
 
 EXPOSE 4499
-CMD ["./wisecow.sh"]
+CMD ["/app/wisecow.sh"]
+
+
+
+
+

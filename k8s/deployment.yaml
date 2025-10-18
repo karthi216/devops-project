@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: wisecow-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: wisecow
@@ -13,7 +13,8 @@ spec:
         app: wisecow
     spec:
       containers:
-      - name: wisecow
-        image: ghcr.io/karthi216/wisecow-k8s-deployment:latest
-        ports:
-        - containerPort: 4499
+        - name: wisecow
+          image: ghcr.io/karthi216/wisecow-k8s-deployment:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4499
