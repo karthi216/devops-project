@@ -47,12 +47,9 @@ chmod +x backup.sh
 If you encounter permission errors (e.g., writing to /var/log), use:
 sudo ./backup.sh
 
-3. output
-
-![Architecture Diagram](backup.png)
-
 🧰 Script Breakdown
 Section	Description
 Configuration	Defines backup source, destination, and log paths
 Backup Execution	Uses rsync for syncing files
+
 Reporting	Displays success or failure with detailed logging
